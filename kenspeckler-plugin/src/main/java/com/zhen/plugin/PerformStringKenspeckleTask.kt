@@ -2,6 +2,7 @@ package com.zhen.plugin
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
+import org.objectweb.asm.ClassReader
 import javax.inject.Inject
 
 open class PerformStringKenspeckleTask : DefaultTask {
@@ -45,6 +46,8 @@ open class PerformStringKenspeckleTask : DefaultTask {
                     println("encrypted: $encrypted")
 
                     // TODO: Write this encrypted value out
+                    // TODO: Use ClassReader to read the class and modify the value of the constants instead of this string parsing?
+                    // TODO: (Then write the modified classes back out)
                 }
             }
         }
@@ -52,6 +55,9 @@ open class PerformStringKenspeckleTask : DefaultTask {
 
     @TaskAction
     fun execute() {
+//        val reader = ClassReader()
+
+
         m_cfg?.let { cfg ->
             val metas = MetaLoader.INSTANCE.load(project, cfg)
             val encryptMeta = MetaLoader.INSTANCE.loadEncryptMeta(project, cfg)

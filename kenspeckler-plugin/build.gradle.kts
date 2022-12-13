@@ -17,6 +17,7 @@ repositories {
 dependencies {
     // Use JUnit test framework for unit tests
     testImplementation("junit:junit:4.13")
+    implementation("org.ow2.asm:asm:9.4")
 }
 
 gradlePlugin {
